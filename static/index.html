@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rust WebRTC Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loginModal">
+        <form class="modal-content" action="/register" method="POST" enctype="multipart/form-data">
+            <h2>Welcome to RustChat</h2>
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <label>Profile Picture:</label>
+            <input type="file" name="pfp" accept="image/*">
+            <button type="submit">Join</button>
+        </form>
+    </div>
+
+    <!-- Sidebar: Online Users & Voice -->
+     <button id="view" 
+     onclick="if(document.getElementById('sidebar').style.display === 'block') { document.getElementById('sidebar').style.display = 'none'; } else { document.getElementById('sidebar').style.display = 'block'; }"
+     ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/250px-Hamburger_icon.svg.png" alt="more" class="icon"></button>
+    <div class="sidebar" id="sidebar">
+        <h2>Online Users</h2>
+        <div id="onlineUsersList" class="user-list"></div>
+
+        <h2 style="margin-top: 30px;">Voice Channel</h2>
+        <button id="joinVoiceBtn" style="padding:10px; margin-bottom: 15px;">Join Voice</button>
+        <div id="voiceUsers"></div>
+    </div>
+
+    <div class="chat-area">
+        <div class="messages" id="messages"></div>
+        <form class="message-box" id="chatForm">
+            <input type="file" id="attachment" style="display:none;">
+            <button type="button" onclick="document.getElementById('attachment').click()"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Noun_project_plus_icon_1014395_cc.svg/120px-Noun_project_plus_icon_1014395_cc.svg.png" alt="file add"></button>
+            <input type="text" id="chatInput" placeholder="Type a message..." required>
+            <button type="submit"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Share_post_button.svg/250px-Share_post_button.svg.png" alt="Send" class="icon"></button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

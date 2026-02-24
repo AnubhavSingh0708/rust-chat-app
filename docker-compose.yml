@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  chat-app:
+    build: .
+    container_name: rust-webrtc-chat
+    ports:
+      - "8080:8080"
+    volumes:
+      # Persist the database
+      - chat-data:/app/data
+      # Persist user uploads (attachments & profile pics)
+      - chat-uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  chat-data:
+  chat-uploads:
